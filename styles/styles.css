@@ -5,6 +5,7 @@
    box-sizing: border-box;
 }
 
+/* var======================================================================= */
 :root {
    --font-worksSans-Comfortaa: 'Comfortaa', cursive;
    --font-worksSans-Inter: 'Inter', sans-serif;
@@ -17,6 +18,7 @@ body {
    padding: 0;
    font-size: 14px;
    line-height: 18px;
+   overflow-x: hidden;
    font-family: var(--font-worksSans-Comfortaa);
 }
 
@@ -38,25 +40,106 @@ ul, ol, li {
    padding: 0;
 }
 
+/* social ========================================================================== */
+.social {
+   position: fixed;
+   z-index: 5;
+   right: 0;
+   top: 50%;
+   border-radius: 20px;
+   background-color: #936d5132;
+   box-shadow: 0 0 10px grey;
+   transform: translateY(-50%) translateX(70%);
+   transition: 0.4s;
+   overflow: hidden;
+}
+
+.social.active {
+   position: fixed;
+   z-index: 5;
+   right: 0;
+   top: 50%;
+   transform: translateY(-50%);
+   border-radius: 20px;
+   background-color: #936d5132;
+   box-shadow: 0 0 10px grey;
+}
+
+.social__wrap {
+   display: flex;
+   justify-content: center;
+}
+
+.social__wrap ul.social__menu {
+   display: flex;
+   gap: 10px;
+   justify-content: space-between;
+   flex-direction: column;
+   z-index: 20;
+   padding: 10px 5px 10px 30px;
+}
+
+.social__wrap ul a img {
+   width: 30px;
+}
+
+.errow img {
+   position: absolute;
+   display: inline-block;
+   top: 50%;
+   transform: translateY(-50%) rotate(180deg);
+   left: 2px;
+   width: 14px;
+   height: 14px;
+   object-fit: cover;
+   z-index: 30;
+   transition: 0.4s;
+   cursor: pointer;
+}
+
+.errow.active img {
+   position: absolute;
+   display: inline-block;
+   top: 50%;
+   transform: translateY(-50%);
+   left: 5px;
+   width: 12px;
+   height: 12px;
+   object-fit: cover;
+   z-index: 30;
+}
+
+
+
+
+/* social end ========================================================================== */
+
 .container, .header__container {
    max-width: 1230px;
    margin: 0 auto;
    padding: 0 15px;
 }
 
+/* header-top ========================================================================== */
+
 .header {
    background-image: url(../images/header-bg.JPG);
    background-repeat: no-repeat;
    background-size: cover;
-   background-position: bottom 150px;
+   background-position: bottom bottom;
    min-height: 100vh;
    position: relative;
 }
 
 .header__container {
+   top: 0;
+   position: relative;
    display: flex;
    justify-content: space-between;
    align-items: center;
+   width: 1230px;
+   padding: 0 15px;
+
 }
 
 .header_wrapper {
@@ -67,12 +150,7 @@ ul, ol, li {
    width: 100%;
    background-color: transparent;
    transition: all 0.3s ease-in-out;
-}
-
-.header__container {
-   width: 1230px;
-   padding: 0 15px;
-   display: flex;
+   z-index: 100;
 }
 
 .logo {
@@ -111,10 +189,15 @@ ul, ol, li {
    font-weight: 600;
 }
 
+/* header-top end ========================================================================== */
+
+/* header-content  ========================================================================== */
+
+
 .header__content {
    position: absolute;
    padding: 40px 70px;
-   top: 50%;
+   top: 60%;
    transform: translateY(-50%);
    left: 0;
    right: 0;
@@ -122,13 +205,11 @@ ul, ol, li {
    width: 900px;
    text-align: center;
    background-color: #c8bbaf62;
-   color: #fff;
+   color: rgb(27, 24, 24);
    box-shadow: 0 0 10px #bcb5b0;
-   transition: 0.5s;
 }
 
 .header__content:hover {
-   transform: translateY(-50%) scale(1.05);
    box-shadow: 0 0 15px #837b75;
 }
 
@@ -154,13 +235,15 @@ ul, ol, li {
 .conection {
    width: 150px;
    padding: 10px;
+   color: var(--header-topColor);
    text-align: center;
    background-color: transparent;
-   border: 2px solid #fff;
+   border: 2px solid var(--header-topColor);
    border-radius: 8px;
    text-transform: uppercase;
    font-weight: 600;
-   transition: all 0.3s ease-in-out;
+   transition: all 0.2s ease-in-out;
+   cursor: pointer;
 }
 
 .conection:hover {
@@ -169,5 +252,18 @@ ul, ol, li {
    color: var(--header-topColor);
 }
 
-/* font-family: 'Comfortaa', cursive;
-font-family: 'Inter', sans-serif; */
+/* header-content end ========================================================================== */
+
+
+/* about ======================================================================================== */
+
+.about {
+   padding-top: 80px;
+   height: 50vh;
+   background-color: #e3e1d9;
+   font-family: 'Comfortaa', cursive;
+}
+
+
+
+/* about end ======================================================================================== */

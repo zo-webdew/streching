@@ -1,3 +1,138 @@
 *, *::before, *::after {
    box-sizing: border-box;
 }
+
+:root {
+   --font-worksSans-Comfortaa: 'Comfortaa', cursive;
+   --font-worksSans-Inter: 'Inter', sans-serif;
+   --basic-color: #2a2828;
+   --header-topColor: #ad8754;
+}
+
+body {
+   margin: 0;
+   padding: 0;
+   font-size: 14px;
+   line-height: 18px;
+   font-family: var(--font-worksSans-Comfortaa);
+}
+
+a {
+   text-decoration: none;
+   color: inherit;
+   font-family: inherit;
+   display: inline-block;
+}
+
+span {
+   display: inline-block;
+}
+
+ul, ol, li {
+   list-style: none;
+   font-family: inherit;
+   margin: 0;
+   padding: 0;
+}
+
+.container, .header__container {
+   max-width: 1230px;
+   margin: 0 auto;
+   padding: 0 15px;
+}
+
+.header {
+   background-image: url(../images/header-bg.JPG);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: bottom 150px;
+   min-height: 100vh;
+   position: relative;
+}
+
+.header__container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.header_wrapper {
+   display: flex;
+   justify-content: space-between;
+   padding: 10px 0;
+   /* background-color: #fff; */
+   position: fixed;
+   width: 100%;
+}
+
+.header__container {
+   width: 1230px;
+   padding: 0 15px;
+   display: flex;
+}
+
+.logo {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.logo img {
+   width: 70px;
+   height: 70px;
+   object-fit: cover;
+   border-radius: 50%;
+}
+
+.logo span {
+   font-size: 20px;
+   color: var(--header-topColor);
+   font-weight: 700;
+   font-size: 20px;
+   line-height: 24px;
+}
+
+.header_menu .header_menu-list {
+   display: flex;
+   gap: 50px;
+   align-items: center;
+   font-weight: 600;
+   color: var(--header-topColor);
+}
+
+.phone {
+   color: var(--header-topColor);
+   font-size: 16px;
+   line-height: 20px;
+   font-weight: 600;
+}
+
+.header__content {
+   position: absolute;
+   padding: 40px 70px;
+   top: 50%;
+   transform: translateY(-50%);
+   left: 0;
+   right: 0;
+   margin: 0 auto;
+   width: 900px;
+   text-align: center;
+   background-color: #deac8134;
+   color: #fff;
+   border-radius: 18px;
+   box-shadow: 0 0 12px #443e39;
+}
+
+.title {
+   font-size: 70px;
+   line-height: 80px;
+   margin-bottom: 30px;
+}
+
+.header__content-text {
+   width: 500px;
+   margin: 0 auto;
+   font-size: 18px;
+   line-height: 22px;
+   margin-bottom: 20px;
+}

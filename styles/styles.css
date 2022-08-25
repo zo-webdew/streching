@@ -40,6 +40,10 @@ ul, ol, li {
    padding: 0;
 }
 
+img {
+   display: inline-block;
+}
+
 /* social ========================================================================== */
 .social {
    position: fixed;
@@ -258,10 +262,89 @@ ul, ol, li {
 /* about ======================================================================================== */
 
 .about {
-   padding-top: 80px;
-   height: 50vh;
-   background-color: #e3e1d9;
-   font-family: 'Comfortaa', cursive;
+   font-family: var(--font-worksSans-Comfortaa);
+   padding-bottom: 100px;
+   padding-top: 100px;
+   background: rgb(246, 228, 135);
+   background: linear-gradient(180deg, rgba(246, 228, 135, 0.15449929971988796) 2%, rgba(252, 251, 246, 1) 100%);
+}
+
+.about__title.animation {
+   font-size: 30px;
+   line-height: 36px;
+   padding-bottom: 40px;
+   margin-bottom: 70px;
+   position: relative;
+   display: inline-block;
+   opacity: 0;
+   transform: translateX(-200%);
+   transition: all 1.5s;
+}
+
+.about__title.animation.element-show {
+   font-size: 30px;
+   line-height: 36px;
+   padding-bottom: 40px;
+   margin-bottom: 70px;
+   position: relative;
+   display: inline-block;
+   transform: translateX(0);
+   opacity: 1;
+}
+
+.about__sub-title {
+   position: absolute;
+   display: inline-block;
+   font-size: 20px;
+   line-height: 24px;
+   color: var(--header-topColor);
+   bottom: 0;
+   right: 0;
+}
+
+.about__text.animation {
+   font-size: 18px;
+   line-height: 22px;
+   word-spacing: 5px;
+   max-width: 800px;
+   margin: 0 auto;
+   margin-bottom: 100px;
+   opacity: 0;
+   transform: translateX(200%);
+   animation-duration: 0.25s;
+   transition: all 1.2s;
+}
+
+.about__text.animation.element-show {
+   font-size: 18px;
+   line-height: 22px;
+   word-spacing: 5px;
+   max-width: 800px;
+   margin: 0 auto;
+   margin-bottom: 100px;
+   opacity: 1;
+   transform: translateX(0%);
+}
+
+.about__info {
+   text-align: center;
+   display: flex;
+   justify-content: space-between;
+   padding-top: 70px;
+   border-top: 1px solid rgb(80, 74, 74);
+}
+
+.about__info-item {
+   padding: 15px;
+
+}
+
+.about__info-item img {
+   width: 200px;
+   height: 200px;
+   object-fit: cover;
+   object-position: center;
+   margin-bottom: 20px;
 }
 
 

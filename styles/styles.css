@@ -302,7 +302,7 @@ img {
    right: 0;
 }
 
-.about__text.animation {
+.about__txt.animation {
    font-size: 18px;
    line-height: 22px;
    word-spacing: 5px;
@@ -310,20 +310,20 @@ img {
    margin: 0 auto;
    margin-bottom: 100px;
    opacity: 0;
-   transform: translateX(200%);
-   animation-duration: 0.25s;
-   transition: all 1.2s;
+   transform: translateY(-200%);
+   animation-delay: 2s;
+   transition: 1.2s;
 }
 
-.about__text.animation.element-show {
+.about__txt.animation.element-show {
    font-size: 18px;
    line-height: 22px;
    word-spacing: 5px;
    max-width: 800px;
    margin: 0 auto;
    margin-bottom: 100px;
+   transform: translateY(0%);
    opacity: 1;
-   transform: translateX(0%);
 }
 
 .about__info {
@@ -337,6 +337,19 @@ img {
 .about__info-item {
    padding: 15px;
 
+}
+
+.about__info-item.animation {
+   position: relative;
+   transform: rotateZ(360deg);
+   opacity: 0;
+   transition: all 2s;
+}
+
+.about__info-item.animation.element-show {
+   position: relative;
+   opacity: 1;
+   transform: rotateZ(0deg);
 }
 
 .about__info-item img {

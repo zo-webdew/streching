@@ -41,25 +41,31 @@ window.onload = function (e) {
       let value = window.scrollY;
       headerContent.style.transform = `translateY(-${50 + (value * 0.09)}%)`;
    });
+
+
+
+
+
+   function onEntry(entry) {
+      entry.forEach(change => {
+         if (change.isIntersecting) {
+            change.target.classList.add('element-show');
+            console.log(change.target.classList);
+         }
+      });
+   }
+
+   let options = {
+      threshold: [0.5]
+   };
+
+   let elements = document.querySelectorAll('.animation');
+   let observer = new IntersectionObserver(onEntry, options);
+
+
+   for (let item of elements) {
+      observer.observe(item);
+   }
 }
 
 
-function onEntry(entry) {
-   entry.forEach(change => {
-      if (change.isIntersecting) {
-         change.target.classList.add('element-show');
-         console.log(change);
-      }
-   });
-}
-
-let options = {
-};
-
-let elements = document.querySelectorAll('.animation');
-let observer = new IntersectionObserver(onEntry, options);
-
-
-for (let item of elements) {
-   observer.observe(item);
-}

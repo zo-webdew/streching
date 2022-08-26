@@ -3,7 +3,8 @@ window.onload = function (e) {
    const headerBlock = document.querySelector('.header_wrapper');
    const headerContent = document.querySelector('.header__content');
 
-   1
+
+
    if (e.isTrusted && window.pageYOffset > 4) {
       headerBlock.style.backgroundColor = '#fff';
       headerBlock.style.padding = '10px 0';
@@ -50,7 +51,6 @@ window.onload = function (e) {
       entry.forEach(change => {
          if (change.isIntersecting) {
             change.target.classList.add('element-show');
-            console.log(change.target.classList);
          }
       });
    }
@@ -68,4 +68,48 @@ window.onload = function (e) {
    }
 }
 
+const images = document.querySelectorAll('.gallery_img');
+const overlay = document.querySelector('.overlay');
+const createNewImages = document.createElement('img');
+const galleryBox = document.querySelector('.gallery_box');
 
+const styleToImg = {
+   'object-fit:': ' cover;',
+   'position:': ' fixed;',
+   'top:': ' 55%;',
+   'transform:': ' translateY(-50%);',
+   'left:': ' 0;',
+   'right:': ' 0;',
+   'margin:': ' 0 auto;',
+   'z-index:': ' 80;',
+   'cursor:': ' pointer',
+}
+
+let allStyles = '';
+for (let key in styleToImg) {
+   allStyles += key + styleToImg[key];
+   createNewImages.style = allStyles;
+}
+
+createNewImages.className = 'img-active';
+
+
+images.forEach(img => {
+   img.addEventListener('click', () => {
+      createNewImages.src = img.src;
+      galleryBox.appendChild(createNewImages);
+      overlay.classList.toggle('active');
+
+      const getNewImages = document.querySelector('.img-active');
+
+      getNewImages.addEventListener('click', () => {
+         getNewImages.remove();
+         overlay.classList.remove('active');
+      })
+
+      overlay.addEventListener('click', () => {
+         overlay.classList.remove('active');
+         getNewImages.remove();
+      })
+   })
+})

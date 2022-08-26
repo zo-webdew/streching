@@ -384,6 +384,11 @@ img {
 
 /* gallery =========================================================================================== */
 
+.gallery {
+   padding-top: 50px;
+   padding-bottom: 80px;
+}
+
 .gallery_box {
    display: flex;
    justify-content: space-between;
@@ -392,9 +397,47 @@ img {
 }
 
 .gallery_img {
-   max-width: 300px;
-   min-height: 300px;
+   width: 300px;
+   height: 300px;
    object-fit: cover;
+   cursor: pointer;
+}
+
+.img-active {
+   object-fit: cover;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translateY(-50%) translateX(-50%);
+   z-index: 80;
+}
+
+.img-active img {
+   cursor: pointer;
+}
+
+.arrow-left {
+   content: '';
+   position: absolute;
+   background-color: #2a282885;
+   width: 50px;
+   height: 100%;
+   left: 0;
+   top: 0;
+   z-index: 90;
+   cursor: pointer;
+}
+
+.arrow-right {
+   content: '';
+   position: absolute;
+   background-color: #2a282885;
+   width: 50px;
+   height: 100%;
+   right: 0;
+   top: 0;
+   z-index: 90;
+   cursor: pointer;
 }
 
 .overlay.active {

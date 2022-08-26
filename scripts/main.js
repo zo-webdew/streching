@@ -68,37 +68,46 @@ window.onload = function (e) {
    }
 }
 
+// get gallery item =======================================
 const images = document.querySelectorAll('.gallery_img');
 const overlay = document.querySelector('.overlay');
-const createNewImages = document.createElement('img');
 const galleryBox = document.querySelector('.gallery_box');
 
-const styleToImg = {
-   'object-fit:': ' cover;',
-   'position:': ' fixed;',
-   'top:': ' 55%;',
-   'transform:': ' translateY(-50%);',
-   'left:': ' 0;',
-   'right:': ' 0;',
-   'margin:': ' 0 auto;',
-   'z-index:': ' 80;',
-   'cursor:': ' pointer',
-}
-
-let allStyles = '';
-for (let key in styleToImg) {
-   allStyles += key + styleToImg[key];
-   createNewImages.style = allStyles;
-}
-
-createNewImages.className = 'img-active';
+//create galley item ======================================
+const createNewDivForImg = document.createElement('div');
+const createNewImages = document.createElement('img');
+const arrowLeft = document.createElement('span');
+const arrowRight = document.createElement('span');
 
 
-images.forEach(img => {
-   img.addEventListener('click', () => {
-      createNewImages.src = img.src;
-      galleryBox.appendChild(createNewImages);
+
+for (let item = 0; item < images.length; item++) {
+   images[item].addEventListener('click', () => {
+      createNewImages.src = images[item].src;
+      createNewDivForImg.className = 'img-active';
+
+      arrowLeft.className = 'arrow-left';
+      arrowRight.className = 'arrow-right';
+
+      createNewDivForImg.appendChild(createNewImages);
+      createNewDivForImg.appendChild(arrowLeft);
+      createNewDivForImg.appendChild(arrowRight);
+      galleryBox.appendChild(createNewDivForImg);
+
       overlay.classList.toggle('active');
+
+      const getClassNameArrowLeft = document.querySelector('.arrow-left');
+      const getClassNameArrowRight = document.querySelector('.arrow-right');
+
+      getClassNameArrowRight.addEventListener('click', () => {
+
+         // createNewImages.src = images[item + 1].src;
+
+         // createNewDivForImg.appendChild(createNewImages);
+         // createNewDivForImg.appendChild(arrowLeft);
+         // createNewDivForImg.appendChild(arrowRight);
+         // galleryBox.appendChild(createNewDivForImg);
+      })
 
       const getNewImages = document.querySelector('.img-active');
 
@@ -112,4 +121,4 @@ images.forEach(img => {
          getNewImages.remove();
       })
    })
-})
+}

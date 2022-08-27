@@ -3,8 +3,6 @@ window.onload = function (e) {
    const headerBlock = document.querySelector('.header_wrapper');
    const headerContent = document.querySelector('.header__content');
 
-
-
    if (e.isTrusted && window.pageYOffset > 4) {
       headerBlock.style.backgroundColor = '#fff';
       headerBlock.style.padding = '10px 0';
@@ -43,10 +41,6 @@ window.onload = function (e) {
       headerContent.style.transform = `translateY(-${50 + (value * 0.09)}%)`;
    });
 
-
-
-
-
    function onEntry(entry) {
       entry.forEach(change => {
          if (change.isIntersecting) {
@@ -68,57 +62,59 @@ window.onload = function (e) {
    }
 }
 
-// get gallery item =======================================
+
 const images = document.querySelectorAll('.gallery_img');
+const showImgBlock = document.querySelector('.show-img');
+const showImg = document.querySelector('.show-img img');
 const overlay = document.querySelector('.overlay');
-const galleryBox = document.querySelector('.gallery_box');
-
-//create galley item ======================================
-const createNewDivForImg = document.createElement('div');
-const createNewImages = document.createElement('img');
-const arrowLeft = document.createElement('span');
-const arrowRight = document.createElement('span');
+const arrowLeft = document.querySelector('.arrow-left');
+const arrowRight = document.querySelector('.arrow-right');
 
 
+for (let i = 0; i < images.length; i++) {
+   images[i].addEventListener('click', () => {
+      showImg.src = images[i].src;
+      showImg.dataset.index = i;
+      addFunction(showImgBlock, 'active');
+      addFunction(overlay, 'active');
+   });
 
-for (let item = 0; item < images.length; item++) {
-   images[item].addEventListener('click', () => {
-      createNewImages.src = images[item].src;
-      createNewDivForImg.className = 'img-active';
+   function addFunction(block, cls) {
+      block.classList.add(cls);
+   }
 
-      arrowLeft.className = 'arrow-left';
-      arrowRight.className = 'arrow-right';
-
-      createNewDivForImg.appendChild(createNewImages);
-      createNewDivForImg.appendChild(arrowLeft);
-      createNewDivForImg.appendChild(arrowRight);
-      galleryBox.appendChild(createNewDivForImg);
-
-      overlay.classList.toggle('active');
-
-      const getClassNameArrowLeft = document.querySelector('.arrow-left');
-      const getClassNameArrowRight = document.querySelector('.arrow-right');
-
-      getClassNameArrowRight.addEventListener('click', () => {
-
-         // createNewImages.src = images[item + 1].src;
-
-         // createNewDivForImg.appendChild(createNewImages);
-         // createNewDivForImg.appendChild(arrowLeft);
-         // createNewDivForImg.appendChild(arrowRight);
-         // galleryBox.appendChild(createNewDivForImg);
-      })
-
-      const getNewImages = document.querySelector('.img-active');
-
-      getNewImages.addEventListener('click', () => {
-         getNewImages.remove();
-         overlay.classList.remove('active');
-      })
-
-      overlay.addEventListener('click', () => {
-         overlay.classList.remove('active');
-         getNewImages.remove();
-      })
-   })
 }
+
+
+overlay.addEventListener('click', () => {
+   removeFunction(overlay, 'active');
+   removeFunction(showImgBlock, 'active');
+});
+
+function removeFunction(block, cls) {
+   block.classList.remove(cls);
+}
+
+arrowLeft.addEventListener('click', () => {
+   let indx = +showImg.dataset.index;
+   if (indx === 0) {
+      indx = images.length - 1;
+      showImg.src = images[indx].src;
+      showImg.dataset.index = indx;
+   } else {
+      showImg.src = images[indx - 1].src;
+      showImg.dataset.index = indx - 1;
+   }
+})
+
+arrowRight.addEventListener('click', () => {
+   let indx = +showImg.dataset.index;
+   if (indx < images.length - 1) {
+      showImg.src = images[indx + 1].src;
+      showImg.dataset.index = indx + 1;
+   } else {
+      indx = 0;
+      showImg.src = images[indx].src;
+      showImg.dataset.index = indx;
+   }
+})

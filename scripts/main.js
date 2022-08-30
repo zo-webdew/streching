@@ -70,6 +70,7 @@ const overlay = document.querySelector('.overlay');
 const arrowLeft = document.querySelector('.arrow-left');
 const arrowRight = document.querySelector('.arrow-right');
 const galleryBox = document.querySelector('.gallery_box');
+const countBlock = document.querySelector('.count');
 
 
 for (let i = 0; i < images.length; i++) {
@@ -77,6 +78,7 @@ for (let i = 0; i < images.length; i++) {
       showImg.src = images[i].src;
       showImg.dataset.index = i;
       galleryBox.style.perspective = 'none';
+      countBlock.textContent = `${+showImg.dataset.index + 1}/${images.length}`;
       addFunction(showImgBlock, 'active');
       addFunction(overlay, 'active');
 
@@ -92,7 +94,7 @@ for (let i = 0; i < images.length; i++) {
 overlay.addEventListener('click', () => {
    removeFunction(overlay, 'active');
    removeFunction(showImgBlock, 'active');
-   galleryBox.style.perspective = '1200px';
+   galleryBox.style.perspective = '600px';
 });
 
 function removeFunction(block, cls) {
@@ -101,29 +103,37 @@ function removeFunction(block, cls) {
 
 arrowLeft.addEventListener('click', () => {
    let indx = +showImg.dataset.index;
+
    if (indx === 0) {
       indx = images.length - 1;
       showImg.src = images[indx].src;
       showImg.dataset.index = indx;
+
+      countBlock.textContent = `${indx + 1}/${images.length}`;
+
    } else {
       showImg.src = images[indx - 1].src;
       showImg.dataset.index = indx - 1;
+
+      countBlock.textContent = `${indx}/${images.length}`;
    }
 })
 
 arrowRight.addEventListener('click', () => {
    let indx = +showImg.dataset.index;
+
    if (indx < images.length - 1) {
       showImg.src = images[indx + 1].src;
       showImg.dataset.index = indx + 1;
+
+      countBlock.textContent = `${indx + 2}/${images.length}`;
    } else {
       indx = 0;
       showImg.src = images[indx].src;
       showImg.dataset.index = indx;
+
+      countBlock.textContent = `${indx + 1}/${images.length}`;
    }
-
-
-
 })
 
 // gallery ====================================================================================
@@ -159,7 +169,6 @@ const galleryFunc = () => {
             xCount = x / 2;
             yCount = y / 2;
             elem.style.transform = `rotateX(-${xCount / 15}deg) rotateY(${yCount / 15}deg)`;
-            console.log(xCount, yCount)
          }
 
       })

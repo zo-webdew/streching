@@ -69,14 +69,17 @@ const showImg = document.querySelector('.show-img img');
 const overlay = document.querySelector('.overlay');
 const arrowLeft = document.querySelector('.arrow-left');
 const arrowRight = document.querySelector('.arrow-right');
+const galleryBox = document.querySelector('.gallery_box');
 
 
 for (let i = 0; i < images.length; i++) {
    images[i].addEventListener('click', () => {
       showImg.src = images[i].src;
       showImg.dataset.index = i;
+      galleryBox.style.perspective = 'none';
       addFunction(showImgBlock, 'active');
       addFunction(overlay, 'active');
+
    });
 
    function addFunction(block, cls) {
@@ -89,6 +92,7 @@ for (let i = 0; i < images.length; i++) {
 overlay.addEventListener('click', () => {
    removeFunction(overlay, 'active');
    removeFunction(showImgBlock, 'active');
+   galleryBox.style.perspective = '1200px';
 });
 
 function removeFunction(block, cls) {
@@ -117,4 +121,55 @@ arrowRight.addEventListener('click', () => {
       showImg.src = images[indx].src;
       showImg.dataset.index = indx;
    }
+
+
+
 })
+
+// gallery ====================================================================================
+
+const galleryFunc = () => {
+   let xCount = 0;
+   let yCount = 0;
+   images.forEach(elem => {
+      elem.addEventListener('mousemove', (e) => {
+         let x = e.offsetX;
+         let y = e.offsetY;
+
+         const w = elem.offsetWidth;
+         const h = elem.offsetHeight;
+
+         if (x < w / 2 && y < h / 2) {
+            xCount = (w / 2) - x;
+            yCount = (h / 2) - y;
+            elem.style.transform = `rotateX(${xCount / 15}deg) rotateY(-${yCount / 15}deg)`;
+         }
+         else if (x > 125 && y < 125) {
+            xCount = x / 2;
+            yCount = (h / 2) - y;
+            elem.style.transform = `rotateX(${xCount / 15}deg) rotateY(${yCount / 15}deg)`;
+         }
+         else if (x < 125 && y > 125) {
+            xCount = (w / 2) - x;
+            yCount = y / 2;
+            elem.style.transform = `rotateX(-${xCount / 15}deg) rotateY(-${yCount / 15}deg)`;
+
+         }
+         else if (x > 125 && y > 125) {
+            xCount = x / 2;
+            yCount = y / 2;
+            elem.style.transform = `rotateX(-${xCount / 15}deg) rotateY(${yCount / 15}deg)`;
+            console.log(xCount, yCount)
+         }
+
+      })
+   })
+
+   images.forEach(img => {
+      img.addEventListener('mouseleave', () => {
+         img.style.transform = `rotateX(0deg) rotateY(0deg)`;
+      })
+   })
+}
+
+galleryFunc();

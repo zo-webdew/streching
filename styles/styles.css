@@ -124,6 +124,25 @@ img {
    padding: 0 15px;
 }
 
+.up-btn {
+   display: none;
+   position: fixed;
+   bottom: 50px;
+   right: 50px;
+   background-color: aliceblue;
+   padding: 10px;
+   border-radius: 5px;
+   font-size: 16px;
+   font-weight: 900;
+   box-shadow: 0 0 7px rgb(57, 56, 56);
+   z-index: 20;
+}
+
+
+.up-btn.active {
+   display: block;
+}
+
 /* header-top ========================================================================== */
 
 .header {
@@ -458,6 +477,7 @@ img {
 .gallery_img {
    width: 170px;
    height: 170px;
+   border-radius: 5px;
    object-fit: cover;
    cursor: pointer;
    transition: all .2s;

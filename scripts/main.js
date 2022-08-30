@@ -2,6 +2,31 @@ window.onload = function (e) {
 
    const headerBlock = document.querySelector('.header_wrapper');
    const headerContent = document.querySelector('.header__content');
+   const anchors = document.querySelectorAll('.anchors[href*="#"]');
+   const upBtn = document.querySelector('.up-btn');
+
+   for (let a of anchors) {
+      a.addEventListener('click', (e) => {
+         e.preventDefault();
+         const blockId = a.getAttribute('href');
+         document.querySelector(blockId).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+         });
+      })
+   }
+
+   const anchorBtn = (block) => {
+      window.addEventListener('scroll', () => {
+         if (window.pageYOffset > 800) {
+            block.classList.add('active');
+         } else {
+            block.classList.remove('active');
+         }
+      })
+   }
+
+   anchorBtn(upBtn);
 
    if (e.isTrusted && window.pageYOffset > 4) {
       headerBlock.style.backgroundColor = '#fff';
@@ -40,6 +65,7 @@ window.onload = function (e) {
       let value = window.scrollY;
       headerContent.style.transform = `translateY(-${50 + (value * 0.09)}%)`;
    });
+
 
    function onEntry(entry) {
       entry.forEach(change => {
@@ -182,3 +208,9 @@ const galleryFunc = () => {
 }
 
 galleryFunc();
+
+
+
+
+
+

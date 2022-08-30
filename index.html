@@ -26,18 +26,19 @@
             </ul>
          </div>
       </div>
-      <header class="header">
+      <header id="top" class="header">
          <div class="header_wrapper">
             <div class="header__container">
-               <a href="#" class="logo"><img src="./images/logo.jpg" alt="logotype"><span>Al Stretch</span></a>
+               <a href="#top" class="logo anchors"><img src="./images/logo.jpg" alt="logotype"><span>Al
+                     Stretch</span></a>
                <nav class="header_menu">
                   <ul class="header_menu-list">
-                     <li><a href="#">About us</a></li>
-                     <li><a href="#">Experts</a></li>
-                     <li><a href="#">Gallery</a></li>
-                     <li><a href="#">Timetable</a></li>
-                     <li><a href="#">Price</a></li>
-                     <li><a href="#">Contacs</a></li>
+                     <li><a class="anchors" href="#about">About us</a></li>
+                     <!-- <li><a class="anchors" href="#">Experts</a></li> -->
+                     <li><a class="anchors" href="#gallery">Gallery</a></li>
+                     <li><a class="anchors" href="#timetable">Timetable</a></li>
+                     <li><a class="anchors" href="#price">Price</a></li>
+                     <li><a class="anchors" href="#contacs">Contacs</a></li>
                   </ul>
                </nav>
                <a href="tel:+380672563232" class="phone">+38 (067) 256 32 32</a>
@@ -52,10 +53,12 @@
                </p>
                <a class="conection" href="#">Send letter</a>
             </div>
+
          </div>
+         <a class="up-btn anchors" href="#top">up</a>
       </header>
 
-      <section class="about">
+      <section id="about" class="about">
          <div class="container about__container">
             <h2 class="about__title animation">
                About Us
@@ -96,7 +99,7 @@
          </div>
       </section>
 
-      <section class="gallery">
+      <section id="gallery" class="gallery">
          <div class="container">
             <h3 class="gallery__title animation">Gallery</h3>
             <p class="gallery__text animation">
@@ -125,18 +128,30 @@
                </div>
 
                <div class="overlay"></div>
-               <a class="gallery__link" href="#">more fotos in instagram</a>
+               <a target="_blank" class="gallery__link" href="https://www.instagram.com/al__stretch/">more fotos in instagram</a>
             </div>
          </div>
       </section>
 
-      <section class="timetable">
+      <section id="timetable" class="timetable">
          <div class="container">
             <div class="timetable__wrapper">
-               
+               <h3>Timetable</h3>
             </div>
          </div>
       </section>
+
+      <section id="price" class="price">
+         <div class="container">
+            <h3>Price</h3>
+         </div>
+      </section>
+
+      <footer id="contacs" class="footer">
+         <div class="container">
+            <h3>Footer</h3>
+         </div>
+      </footer>
    </div>
 
    <script src="./scripts/main.js"></script>
